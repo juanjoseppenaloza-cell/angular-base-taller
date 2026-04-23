@@ -573,3 +573,27 @@ El docente revisará tu PR. Si hay comentarios, responde en la misma conversaci�
 > _"Dime y lo olvido, enséñame y lo recuerdo, involúcrame y lo aprendo."_ — Benjamin Franklin
 
 **¡Éxitos con tu primer Pull Request, futuro ingeniero Unipaz! 🚀**
+Interpolación ({{ }}): Es solo para mostrar texto del código en el HTML.
+
+Data Binding: Es el término general para conectar datos. La diferencia es que el binding puede controlar propiedades (como desactivar un botón) y no solo texto.
+
+{{ valor }} (Interpolación): Muestra texto.[propiedad]="x" (Property): Controla atributos del HTML (ej. [src], [disabled]).(evento)="f()" (Event): Detecta acciones (ej. (click)).[(ngModel)]="x" (Two-way): Sincroniza ambos lados al mismo tiempo (Input $\leftrightarrow$ Código).
+En lugar de variables simples, usa signal(). Son más rápidos porque Angular sabe exactamente qué parte del HTML actualizar.
+
+Crear: count = signal(0);
+
+Leer en HTML: {{ count() }} (siempre con paréntesis).
+
+Cambiar: count.set(5); o count.update(n => n + 1);
+
+Fork: Botón en GitHub para copiar el proyecto a tu cuenta.
+
+Clone: Bajas tu copia (git clone).
+
+Branch: Creas una rama (git checkout -b mi-mejora).
+
+Commit/Push: Guardas y subes cambios (git commit, git push).
+
+PR: En GitHub, pides al dueño original que acepte tus cambios (Pull Request).
+
+image.png
