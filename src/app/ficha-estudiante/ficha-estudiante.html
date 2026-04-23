@@ -1,0 +1,124 @@
+<div class="page">
+  <header class="topbar">
+    <div>
+      <h1 class="title">Dashboard · Registro de Estudiante</h1>
+      <p class="subtitle">Template-driven form con <code>ngModel</code> + vista previa en vivo</p>
+    </div>
+    <div class="badges">
+      <span class="badge">Guardados: <strong>{{ contadorGuardados() }}</strong></span>
+      <span class="badge">Estado: <strong>{{ estado() }}</strong></span>
+    </div>
+  </header>
+
+  <section class="grid">
+    <article class="card">
+      <div class="cardHeader">
+        <h2 class="cardTitle">Formulario</h2>
+        <p class="cardHint">Completa los datos y mira el resumen a la derecha.</p>
+      </div>
+
+      <form class="form">
+        <div class="fields">
+          <div class="field">
+            <label class="label" for="nombre">Nombre</label>
+            <input id="nombre" type="text" name="nombre" [(ngModel)]="nombre" placeholder="Nombre completo" class="control" />
+            <div class="help">Vista previa: <strong>{{ nombre || '—' }}</strong></div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="codigo">Código</label>
+            <input id="codigo" type="number" name="codigo" [(ngModel)]="codigo" placeholder="Ej: 12345" class="control" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="programa">Programa</label>
+            <select id="programa" name="programa" [(ngModel)]="programa" class="control">
+              <option value="" disabled [selected]="programa === ''">Seleccione un programa</option>
+              <option value="pbc">PBC</option>
+              <option value="ingenieria_sistemas">Ing. Sistemas</option>
+              <option value="ingenieria_ambiental">Ing. Ambiental</option>
+              <option value="medicina">Medicina</option>
+              <option value="derecho">Derecho</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label" for="semestre">Semestre</label>
+            <input id="semestre" type="number" name="semestre" [(ngModel)]="semestre" min="1" max="10" class="control" />
+            <div class="pill" [class.pillOk]="semestre >= 7">Nivel: {{ semestre >= 7 ? 'Avanzado' : 'Básico' }}</div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="correo">Correo electrónico</label>
+            <input id="correo" type="email" name="correo" [(ngModel)]="correo" placeholder="usuario@unipaz.edu.co" class="control" />
+            <div class="pill" [class.pillOk]="correoValido()">Dominio: {{ correoValido() ? 'Válido' : 'Inválido' }}</div>
+          </div>
+
+          <div class="field row">
+            <label class="checkbox">
+              <input type="checkbox" name="tieneBeca" [(ngModel)]="tieneBeca" />
+              <span>Tiene beca</span>
+            </label>
+            <span class="pill" [class.pillOk]="tieneBeca">{{ tieneBeca ? 'Con beca' : 'Sin beca' }}</span>
+          </div>
+
+          <div class="field row">
+            <div>
+              <label class="label" for="colorFavorito">Color favorito</label>
+              <input id="colorFavorito" type="color" name="colorFavorito" [(ngModel)]="colorFavorito" class="colorControl" />
+            </div>
+            <div class="colorSwatch" [style.backgroundColor]="colorFavorito" title="Color favorito"></div>
+            <span class="mono">{{ colorFavorito }}</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btnPrimary" (click)="guardar()" [disabled]="!nombre || !correo">
+            Guardar
+          </button>
+          <button type="button" class="btnGhost" (click)="limpiar()">Limpiar</button>
+        </div>
+      </form>
+    </article>
+
+    <aside class="card">
+      <div class="cardHeader">
+        <h2 class="cardTitle">Resumen</h2>
+        <p class="cardHint">Datos en vivo usando interpolation.</p>
+      </div>
+
+      <div class="summary">
+        <div class="hero" [style.background]="
+          'linear-gradient(135deg, ' + colorFavorito + '33, #0b122033)'
+        ">
+          <div class="heroTitle">
+            <div class="avatar" [style.backgroundColor]="colorFavorito"></div>
+            <div>
+              <div class="heroName">{{ nombre || 'Sin nombre' }}</div>
+              <div class="heroMeta">{{ programa || 'Sin programa' }} · Sem {{ semestre }}</div>
+            </div>
+          </div>
+        </div>
+
+        <dl class="kv">
+          <div class="kvRow">
+            <dt>Código</dt>
+            <dd>{{ codigo || '—' }}</dd>
+          </div>
+          <div class="kvRow">
+            <dt>Correo</dt>
+            <dd>{{ correo || '—' }}</dd>
+          </div>
+          <div class="kvRow">
+            <dt>Beca</dt>
+            <dd>{{ tieneBeca ? 'Sí' : 'No' }}</dd>
+          </div>
+        </dl>
+
+        <div class="note" [class.noteOk]="correoValido()">
+          Correo institucional: <strong>{{ correoValido() ? 'Correcto' : 'Debe terminar en @unipaz.edu.co' }}</strong>
+        </div>
+      </div>
+    </aside>
+  </section>
+</div>
