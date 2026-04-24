@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class FichaEstudiante {
 
-  // ngModel
+  
   nombre = '';
   codigo = 0;
   programa = '';

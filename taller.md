@@ -573,6 +573,7 @@ El docente revisará tu PR. Si hay comentarios, responde en la misma conversaci�
 > _"Dime y lo olvido, enséñame y lo recuerdo, involúcrame y lo aprendo."_ — Benjamin Franklin
 
 **¡Éxitos con tu primer Pull Request, futuro ingeniero Unipaz! 🚀**
+<<<<<<< HEAD
 Interpolación ({{ }}): Es solo para mostrar texto del código en el HTML.
 
 Data Binding: Es el término general para conectar datos. La diferencia es que el binding puede controlar propiedades (como desactivar un botón) y no solo texto.
@@ -597,3 +598,5 @@ Commit/Push: Guardas y subes cambios (git commit, git push).
 PR: En GitHub, pides al dueño original que acepte tus cambios (Pull Request).
 
 image.png
+=======
+>>>>>>> upstream/main
